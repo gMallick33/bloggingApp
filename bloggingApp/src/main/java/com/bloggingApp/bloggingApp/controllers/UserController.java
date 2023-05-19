@@ -6,6 +6,7 @@ import com.bloggingApp.bloggingApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,6 +30,9 @@ public class UserController {
         UserDto updatedUser = this.userService.updateUser(userDto, uId);
         return ResponseEntity.ok(updatedUser);
     }
+
+    // ADMIN can do delete operation
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable("userId") Integer uid){
         this.userService.deleteUser(uid);
