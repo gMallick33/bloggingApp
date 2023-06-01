@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bloggingApp" />
+        <module name="BlogApplication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BlogApplication" target="11" />
       <module name="bloggingApp" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BlogApplication" options="-parameters" />
       <module name="bloggingApp" options="-parameters" />
     </option>
   </component>
